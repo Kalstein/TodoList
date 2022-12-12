@@ -1,45 +1,21 @@
-import {NavigationContainer} from '@react-navigation/native';
-import {createDrawerNavigator} from '@react-navigation/drawer';
 import MyList from './content/MyList'
-import MyButton from './content/MyButton'
-
-import { Button } from 'react-native'
+import SignIn from './content/SignInPage'
+import SignUp from './content/SignUpPage'
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from "@react-navigation/native";
 
 export default function App() {
-  const Drawer = createDrawerNavigator()
+  const Stack = createStackNavigator()
 
   return (
     <NavigationContainer>
-      <Drawer.Navigator
-        initialRouteName="Home"
-        drawerPosition="left"
-        backBehavior="history">
-        <Drawer.Screen name="Home" component={HomeScreen} />
-        <Drawer.Screen name="Setting" component={SettingScreen} />
-        <Drawer.Screen name="List" component={MyList} />
-      </Drawer.Navigator>
+      <Stack.Navigator
+        initialRouteName="SignIn"
+      >
+          <Stack.Screen name="Home" component={MyList} />
+          <Stack.Screen name="SignIn" component={SignIn} />
+          <Stack.Screen name="SignUp" component={SignUp} />
+      </Stack.Navigator>
     </NavigationContainer>
-  )
-}
-
-const HomeScreen = (navigation) => {
-  return (
-    <View>
-      <Text>Home</Text>
-      <Button title="Drawer 열기" onPress={() => navigation.openDrawer()} />
-      <Button
-        title="Setting 열기"
-        onPress={() => navigation.navigate('Setting')}
-      />
-    </View>
-  )
-}
-
-const SettingScreen = (navigation) => {
-  return (
-    <View>
-      <Text>Setting</Text>
-      <Button title="뒤로가기" onPress={() => navigation.goBack()} />
-    </View>
   )
 }

@@ -8,7 +8,7 @@ const MyButton = (props) => {
             props.onPress()
           }}
         >
-          <Text style={props.textStyle}>{props.title? props.title:''}</Text>
+          <Text style={props.textStyle}>{props.title}</Text>
           <Image source={props.image? props.image:''} style={styles.ImageView} resizeMode="contain"/>
         </TouchableOpacity>
     )
